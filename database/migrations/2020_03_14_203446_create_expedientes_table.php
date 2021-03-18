@@ -29,6 +29,7 @@ class CreateExpedientesTable extends Migration
             $table->unsignedBigInteger('juzgado_id');
             $table->foreign('juzgado_id')->references('id')->on('juzgados');
 
+
             $table->timestamps();
         });
     }

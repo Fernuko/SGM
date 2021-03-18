@@ -55,6 +55,12 @@
                             <a class="btn btn-success" href="{{ route('mediaciones.create')}}">MEDIACIONES</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-success" href="{{ route('manejoDeFondos.create')}}">FONDOS</a>
+                        </li>
+                    </ul>
+
 
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle"
@@ -67,6 +73,7 @@
                           <li><a href="{{route('juzgados.index')}}">JUZGADOS</a></li>
                           <li><a href="{{route('expedientes.index')}}">EXPEDIENTES</a></li>
                           <li><a href="{{route('mediaciones.index')}}">MEDIACIONES</a></li>
+                          <li><a href="{{route('manejoDeFondos.index')}}">FONDOS</a></li>
                         </ul>
                     </div>
 
@@ -106,9 +113,9 @@
             </div>
         </nav>
         <main class="py-4">
-
-        <div class="row">
-            <div class="col-sm-2">
+            <div class="row">
+                @auth
+                <div class="col-sm-2">
                  <ul class="navbar-nav">
                 FORMULARIOS Y NORMAS
                 <li class="nav-item">
@@ -144,6 +151,7 @@
                 </li>
                 </ul>
             </div>
+            @endauth
             <div class="col-sm-2 col-lg-10">
                 @yield('content')
             </div>

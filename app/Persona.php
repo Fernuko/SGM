@@ -15,4 +15,9 @@ class Persona extends Model
         'domicilio',
         'telefono',
     ];
+
+    public function expedientes()
+    {
+        $this->belongsTo('App\Expediente');
+    }
 }

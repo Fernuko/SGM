@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class EstadosSeeder extends Seeder
+class ManejoCuotaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +12,10 @@ class EstadosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('estados')->insert([
-            ['estado' => 'Inicio'],
-            ['estado' => 'En tramite' ],
-            ['estado' => 'Finalizado'],
+        DB::table('Manejo_Cuotas')->insert([
+            ['manejoCuota' => '1'],
+            ['manejoCuota' => '2' ],
+            ['manejoCuota' => '3'],
         ]);
     }
 }

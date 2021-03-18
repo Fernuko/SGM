@@ -3,7 +3,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
+        <h2 class="float-left">MODIFIQUE LOS DATOS DEL EXPEDIENTE</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-8">
         <form action="{{route('expedientes.update',$expediente->id)}}" method="POST">
             @csrf
             @method('PUT')
@@ -57,6 +64,7 @@
                   </span>
                 @endif
 
+
             <div class="form-group">
                 <label for="demandado_id">Demandado</label>
                 <select class="custom-select" name="demandado_id" id="demandado_id">
@@ -88,7 +96,7 @@
             <div class="form-group">
                 <label for="juzgado_id">Juzgado</label>
                 <select class="custom-select" name="juzgado_id" id="juzgado_id">
-                    @foreach ($personas as $juzgado)
+                    @foreach ($juzgados as $juzgado)
                         <option value="{{$juzgado->id}}">{{$juzgado->nombre.", ".$juzgado->telefono}}</option>
                     @endforeach
                 </select>
@@ -98,11 +106,6 @@
                   </span>
                 @endif
             </div>
-
-
-
-
-
 
             <button type="submit" class="btn btn-primary">Actualizar</button>
           </form>

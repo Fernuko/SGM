@@ -3,7 +3,14 @@
 @section('content')
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
+        <h2 class="float-left">MODIFIQUELOS DATOS DEL JUZGADO</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-8">
             <form action="{{route('juzgados.update', $juzgado->id)}}" method="POST">
             @csrf
             @method('PUT')

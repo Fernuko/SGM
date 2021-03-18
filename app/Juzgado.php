@@ -12,4 +12,8 @@ class Juzgado extends Model
         'nombre',
         'telefono',
     ];
+    public function expediente()
+    {
+        return $this->belongsTo('App\Expediente');
+    }
 }

@@ -3,13 +3,13 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <h2 class="float-left">INGRESAR DATOS DEL ABOGADO</h2>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <form action="{{ route('abogados.store') }}" method="POST">
             @csrf
             <div class="form-group">

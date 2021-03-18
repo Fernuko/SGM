@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <h2 class="float-left">INGRESAR DATOS DEL JUZGADO</h2>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <form action="/juzgados" method="POST">
             @csrf
             <div class="form-group">

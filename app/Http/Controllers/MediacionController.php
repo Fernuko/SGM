@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Mediacion;
 use App\Expediente;
 use App\TipoCierre;
+use App\Estado;
 use EstadosSeeder;
 
 class MediacionController extends Controller
@@ -33,7 +34,7 @@ class MediacionController extends Controller
     {
         $expedientes = Expediente::orderBy('numero')->get();
         $cierres = TipoCierre::orderBy('tipo_cierre')->get();
-        $estados = Estados::orderBy('estado')->get();
+        $estados = Estado::orderBy('estado')->get();
 
         return view('mediaciones.create')
                     ->withExpedientes($expedientes)
@@ -62,7 +63,7 @@ class MediacionController extends Controller
 
         $mediacion->numero = $request->numero;
         $mediacion->estado_id = $request->estado_id;
-        $mediacion->tipo_id = $request->tipo_id;
+        $mediacion->tipo_cierre_id = $request->tipo_cierre_id;
         $mediacion->observaciones = $request->observaciones;
         $mediacion->expediente_id = $request->expediente_id;
         $mediacion->fecha = $request->fecha;
@@ -93,12 +94,14 @@ class MediacionController extends Controller
      */
     public function edit($id)
     {
+        $expedientes = Expediente::orderBy('numero')->get();
         $mediacion = Mediacion::findOrFail($id);
         $cierres = TipoCierre::orderBy('tipo_cierre')->get();
-        $estados = Estados::orderBy('estado')->get();
+        $estados = Estado::orderBy('estado')->get();
 
         if (isset($mediacion)) {
             return view('mediaciones.edit')
+                    ->withExpedientes($expedientes)
                     ->withMediacion($mediacion)
                     ->withCierres($cierres)
                     ->withEstados($estados);
@@ -129,7 +132,7 @@ class MediacionController extends Controller
         if (isset($mediacion)) {
             $mediacion->numero = $request->numero;
             $mediacion->estado_id = $request->estado_id;
-            $mediacion->tipo_id = $request->tipo_id;
+            $mediacion->tipo_cierre_id = $request->tipo_cierre_id;
             $mediacion->observaciones = $request->observaciones;
             $mediacion->expediente_id = $request->expediente_id;
             $mediacion->fecha = $request->fecha;

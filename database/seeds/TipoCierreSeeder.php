@@ -20,7 +20,7 @@ class TipoCierreSeeder extends Seeder
             ['tipo_cierre' => 'Sin acuerdo'],
             ['tipo_cierre' => 'Incomparencia'],
             ['tipo_cierre' => 'Otros'],
-            ['tipo_cierre' => 'Mediacion a distancia']
+            ['tipo_cierre' => 'Mediación a distancia']
         ]);
     }
 }

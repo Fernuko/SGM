@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-8">
             <h2 class="float-left">EXPEDIENTES</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-8">
             <a href="{{ route('expedientes.create') }}" class="btn btn-success float-right">Nuevo <span class="fa fa-plus-square"></span></a>
             <br>
         </div>
     </div>
    <div class="row">
-       <div class="col-8 offset-2">
+       <div class="col-8">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -21,7 +21,6 @@
                         <td>Número de expediente</td>
                         <td>Actor</td>
                         <td>Demandado</td>
-
                         <td> - - - </td>
                     </tr>
                 </thead>
@@ -30,8 +29,8 @@
                         <tr>
                             <td>{{ $expediente->caratula }}</td>
                             <td>{{ $expediente->numero }}</td>
-                            <td>{{ $expediente->actor_apellido }}</td>
-                            <td>{{ $expediente->demandado }}</td>
+                            <td>{{ $expediente->actor->apellido. "  ".$expediente->actor->nombre }}</td>
+                            <td>{{ $expediente->demandado->apellido }}</td>
                             <td>
 
                                 <span>

@@ -17,4 +17,9 @@ class Abogado extends Model
         'email',
         'matricula',
     ];
+
+    public function expedientes()
+    {
+        return $this->belongsTo('App\Expediente');
+    }
 }

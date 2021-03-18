@@ -14,5 +14,25 @@ class Mediacion extends Model
         'estado',
         'tipo',
         'observaciones',
+        'fechas',
     ];
+    public function expediente()
+    {
+        return $this->hasOne('App\Expediente');
+    }
+
+    public function estado()
+    {
+        return $this->belongsTo('App\Estado');
+    }
+
+    public function tipoCierre()
+    {
+        return $this->belongsTo('App\TipoCierre');
+    }
+
+
+
+
+
 }

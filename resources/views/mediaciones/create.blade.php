@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <h2 class="float-left">INGRESAR DATOS DE LA MEDIACION</h2>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <form action="/mediaciones" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">

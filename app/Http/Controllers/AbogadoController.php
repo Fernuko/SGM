@@ -103,7 +103,7 @@ class AbogadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        //dd($request);
         $this->validate($request, [
             'apellido' => 'required|string',
             'nombre' => 'required|string',

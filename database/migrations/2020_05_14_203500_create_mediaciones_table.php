@@ -16,8 +16,6 @@ class CreateMediacionesTable extends Migration
         Schema::create('mediaciones', function (Blueprint $table) {
             $table->id();
             $table->string("numero");
-            $table->string("estado");
-            $table->string("tipo");
             $table->string("observaciones");
             $table->dateTime('fecha')->nullable();
             $table->string('archivo')->nullable();
@@ -26,7 +24,8 @@ class CreateMediacionesTable extends Migration
             $table->foreign('expediente_id')->references('id')->on('expedientes');
             $table->unsignedBigInteger('tipo_cierre_id');
             $table->foreign('tipo_cierre_id')->references('id')->on('tipo_cierres');
-
+            $table->unsignedBigInteger('estado_id');
+            $table->foreign('estado_id')->references('id')->on('estados');
 
             $table->timestamps();
 

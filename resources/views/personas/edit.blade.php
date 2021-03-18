@@ -2,8 +2,16 @@
 
 @section('content')
 
+
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
+        <h2 class="float-left">MODIFIQUELOS DATOS DE LA PERSONA</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-8">
         <form action="{{route('personas.update', $persona->id)}}" method="POST">
             @csrf
             @method('PUT')

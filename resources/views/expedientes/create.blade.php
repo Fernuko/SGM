@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <h2 class="float-left">INGRESAR DATOS DEL EXPEDIENTE</h2>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8">
         <form action="/expedientes" method="POST">
             @csrf
             <div class="form-group">
@@ -85,12 +85,12 @@
 
 
 
-        </div>
+            </div>
             <div class="form-group">
                 <label for="juzgado_id">Juzgado</label>
                 <select class="custom-select" name="juzgado_id" id="juzgado_id">
                     @foreach ($juzgados as $juzgado)
-                        <option value="{{$juzgado->id}}">{{$juzgado->nombre.", ".$juzgado->telefono}}</option>
+                        <option value="{{$juzgado->id}}">{{$juzgado->nombre.", ". $juzgado->telefono}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('juzgado_id'))

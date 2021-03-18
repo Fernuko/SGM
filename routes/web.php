@@ -21,12 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('abogados', 'AbogadoController');
+Route::resource('abogados', 'AbogadoController')->middleware('auth');
 
-Route::resource('personas', 'PersonaController');
+Route::resource('personas', 'PersonaController')->middleware('auth');
 
-Route::resource('juzgados', 'JuzgadoController');
+Route::resource('juzgados', 'JuzgadoController')->middleware('auth');
 
-Route::resource('expedientes', 'ExpedienteController');
+Route::resource('expedientes', 'ExpedienteController')->middleware('auth');
 
-Route::resource('mediaciones', 'MediacionController');
+Route::resource('mediaciones', 'MediacionController')->middleware('auth');
+
+Route::resource('manejoDeFondos', 'ManejoDeFondoController')->middleware('auth');
