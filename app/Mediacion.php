@@ -10,15 +10,16 @@ class Mediacion extends Model
     protected $table= 'mediaciones';
 
     protected $fillable = [
-        'número',
+        'numero',
         'estado',
-        'tipo',
+        'tipo_cierre_id',
         'observaciones',
-        'fechas',
+        'fecha',
+        'expediente_id',
     ];
     public function expediente()
     {
-        return $this->hasOne('App\Expediente');
+        return $this->belongsTo('App\Expediente');
     }
 
     public function estado()
@@ -29,6 +30,11 @@ class Mediacion extends Model
     public function tipoCierre()
     {
         return $this->belongsTo('App\TipoCierre');
+    }
+
+    public function honorario()
+    {
+        return $this->hasOne('App\Honorario');
     }
 
 

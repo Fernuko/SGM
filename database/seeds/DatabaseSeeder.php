@@ -12,8 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            EstadosSeeder::class,
+            EstadoSeeder::class,
             TipoCierreSeeder::class,
         ]);
+        factory(App\Abogado::class,30)->create();
+        factory(App\Persona::class,30)->create();
     }
 }

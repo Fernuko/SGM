@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Estados;
 use Illuminate\Http\Request;
 
 use App\Mediacion;
 use App\Expediente;
 use App\TipoCierre;
 use App\Estado;
-use EstadosSeeder;
+use App\Honorario;
 
 class MediacionController extends Controller
 {
@@ -159,6 +158,49 @@ class MediacionController extends Controller
         $mediacion->delete();
 
         return redirect(route('mediaciones.index'));
+
+    }
+
+    public function verAsignarHonorarios($id)
+    {
+        $mediacion = Mediacion::with('expediente')
+                               ->with('estado')
+                               ->with('tipoCierre')
+                               ->find($id);
+
+        return view('mediaciones.asignarHonorario')
+                    ->withMediacion($mediacion);
+    }
+
+    public function asignarHonorarios(Request $request, $id)
+    {
+        $this->validate($request, [
+            'benecificio_actor' => 'boolean',
+            'benecificio_demandado' => 'boolean',
+            'monto_actor' => 'required|numeric',
+            'monto_demandado' => 'required|numeric',
+            'fecha_pago_actor' => 'required|date',
+            'fecha_pago_demandado' => 'required|date',
+        ]);
+
+        $mediacion = Mediacion::with('honorario')->find($id);
+        if (!$mediacion->honorario()->exists()) {
+            $honorario = Honorario::create([
+                'benecificio_actor' => $request->beneficio_actor ? true:false,
+                'benecificio_demandado' => $request->beneficio_demandado ? true:false,
+                'monto_actor' => $request->monto_actor,
+                'monto_demandado' => $request->monto_demandado,
+                'fecha_pago_actor' => $request->fecha_pago_actor,
+                'fecha_pago_demandado' => $request->fecha_pago_demandado,
+                'mediacion_id' => $id
+            ]);
+        }
+        return redirect(route('mediaciones.index'));
+
+    }
+
+    public function listarHonorarios()
+    {
 
     }
 }

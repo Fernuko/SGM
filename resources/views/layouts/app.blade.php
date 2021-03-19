@@ -55,11 +55,11 @@
                             <a class="btn btn-success" href="{{ route('mediaciones.create')}}">MEDIACIONES</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav mr-auto">
+                    {{-- <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="btn btn-success" href="{{ route('manejoDeFondos.create')}}">FONDOS</a>
                         </li>
-                    </ul>
+                    </ul> --}}
 
 
                     <div class="btn-group">

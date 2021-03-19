@@ -20,4 +20,10 @@ class Persona extends Model
     {
         $this->belongsTo('App\Expediente');
     }
+
+    public function getApyNom()
+    {
+        return $this->apellido.", ".$this->nombre;
+    }
+
 }

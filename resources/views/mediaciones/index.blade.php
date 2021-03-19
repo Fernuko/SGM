@@ -20,6 +20,11 @@
                         <td>Número</td>
                         <td>Observaciones</td>
                         <td>Estado</td>
+                        <td>Actor</td>
+                        <td>Demandado</td>
+                        <td>Honorarios</td>
+                        <td colspan="3">Monto total</td>
+                        <td> - - - </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +33,13 @@
                             <td>{{ $mediacion->numero }}</td>
                             <td>{{ $mediacion->observaciones }}</td>
                             <td>{{ $mediacion->estado->estado }}</td>
+                            <td>{{ $mediacion->expediente->actor->getApyNom() }}</td>
+                            <td>{{ $mediacion->expediente->demandado->getApyNom() }}</td>
+                            <td>{{ $mediacion->honorario()->exists() ? "ACORDADOS":"SIN ACORDAR" }}</td>
+                            <td>{{ $mediacion->honorario()->exists() ? "$ ".strval($mediacion->honorario->monto_actor+$mediacion->honorario->monto_demandado):"- - -" }}</td>
+                            <td></td>
+                            <td></td>
+
                             <td>
 
                                 <span>
@@ -37,6 +49,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar la mediación')"><span class="fa fa-trash"></span></button>
+                                        <a href="{{ route('asignarHonorario.view',$mediacion->id) }}" class="btn btn-sm btn-primary"><strong>$</strong></a>
                                     </form>
                                 </span>
 

@@ -31,4 +31,8 @@ Route::resource('expedientes', 'ExpedienteController')->middleware('auth');
 
 Route::resource('mediaciones', 'MediacionController')->middleware('auth');
 
+Route::get('asignarHonorario/{id}','MediacionController@verAsignarHonorarios')->middleware('auth')->name('asignarHonorario.view');
+
+Route::post('asignarHonorario/{id}','MediacionController@asignarHonorarios')->middleware('auth')->name('asignarHonorario.post');
+
 Route::resource('manejoDeFondos', 'ManejoDeFondoController')->middleware('auth');

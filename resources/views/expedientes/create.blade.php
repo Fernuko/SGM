@@ -47,7 +47,7 @@
                 <label for="abogado_actor_id">Abogado del Actor</label>
                 <select class="custom-select" name="abogado_actor_id" id="abogado_actor_id">
                     @foreach ($abogados as $abogado_actor)
-                        <option value="{{$abogado_actor->id}}">{{$abogado_actor->apellido.", ".$abogado_actor->nombre}}</option>
+                        <option value="{{$abogado_actor->id}}">{{$abogado_actor->apellido.", ".$abogado_actor->nombre." - Mat: ".$abogado_actor->matricula}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('abogado_actor_id'))
@@ -60,7 +60,7 @@
                 <label for="demandado_id">Demandado</label>
                 <select class="custom-select" name="demandado_id" id="demandado_id">
                     @foreach ($personas as $demandado)
-                        <option value="{{$demandado->id}}">{{$demandado->apellido.", ".$demandado->nombre}}</option>
+                        <option value="{{$demandado->id}}">{{$demandado->apellido.", ".$demandado->nombre." - Mat: ".$abogado_actor->matricula}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('demandado_id'))

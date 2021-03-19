@@ -22,4 +22,9 @@ class Abogado extends Model
     {
         return $this->belongsTo('App\Expediente');
     }
+
+    public function getApYNom()
+    {
+        return $this->apellido.", ".$this->nombre." - mat: ".$this->matricula;
+    }
 }
