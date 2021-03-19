@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header text-center"><strong>{{ $mediacion->expediente->actor->apellido." vs ".$mediacion->expediente->demandado->apellido }}</strong></h5>
                 <div class="card-body">
-                    <h3 class="card-title text-center mb-4">AGREGAR HONORARIOS</h3>
+                    <h3 class="card-title text-center mb-4">VER HONORARIO DE MEDIACION: {{ $mediacion->numero }}</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <h4>ACTOR:</h4>
