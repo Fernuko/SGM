@@ -31,7 +31,9 @@ class MediacionController extends Controller
      */
     public function create()
     {
-        $expedientes = Expediente::orderBy('numero')->get();
+        $expedientes = Expediente::orderBy('numero')
+                        ->whereDoesntHave('mediacion')
+                        ->get();
         $cierres = TipoCierre::orderBy('tipo_cierre')->get();
         $estados = Estado::orderBy('estado')->get();
 

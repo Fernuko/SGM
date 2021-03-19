@@ -74,10 +74,10 @@
                 @endif
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="col-xs-2 control-label">Adjuntar el archivo del resultado de la Mediación:</label>
                 <input type="file" name="archivo" title="seleccionar fichero" id="importData" accept=".doc,.xdoc" />
-            </div>
+            </div> --}}
         <button type="submit" class="btn btn-primary">Crear</button>
         </form>
     </div>
