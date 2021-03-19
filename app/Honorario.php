@@ -21,6 +21,8 @@ class Honorario extends Model
     protected $cast = [
         'beneficio_actor' => 'boolean',
         'beneficio_demandado' => 'boolean',
+        'fecha_pago_actor' => 'date',
+        'fecha_pago_demandado' => 'date',
     ];
 
 

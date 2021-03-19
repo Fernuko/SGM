@@ -164,12 +164,15 @@ class MediacionController extends Controller
     public function verAsignarHonorarios($id)
     {
         $mediacion = Mediacion::with('expediente')
-                               ->with('estado')
-                               ->with('tipoCierre')
                                ->find($id);
-
-        return view('mediaciones.asignarHonorario')
+        if (!$mediacion->honorario->exists()) {
+            return view('mediaciones.asignarHonorario')
                     ->withMediacion($mediacion);
+        }
+        return view('mediaciones.verHonorario')
+                        ->withMediacion($mediacion);
+
+
     }
 
     public function asignarHonorarios(Request $request, $id)
