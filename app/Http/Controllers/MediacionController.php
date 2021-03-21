@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Estado;
 
+use App\Honorario;
 use App\Mediacion;
+use Carbon\Carbon;
 use App\Expediente;
 use App\TipoCierre;
-use App\Estado;
-use App\Honorario;
+use Illuminate\Http\Request;
+use App\Exports\HonorariosExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Resources\MediacionResource;
+use App\Http\Resources\MediacionCollection;
 
 class MediacionController extends Controller
 {
+
+    public function __construct(Mediacion $mediacion)
+    {
+        $this->mediacion = $mediacion;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -79,12 +90,23 @@ class MediacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  integer  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $mediacion = Mediacion::with('tipoCierre')->find($id);
+        //$med = new MediacionResource($mediacion);
+        /*$med = [
+            'id' => $mediacion->id,
+            'observaciones' => $mediacion->observaciones,
+            'estado' => $mediacion->estado->estado,
+            'actor' => $mediacion->
+            'tipoCierre' => $mediacion->tipoCierre->tipo_cierre,
+        ];*/
+        //dd($med);
+        // return view('mediaciones.show')
+        //     ->with(['mediacion' => $med]);
     }
 
     /**
@@ -204,8 +226,53 @@ class MediacionController extends Controller
 
     }
 
-    public function listarHonorarios()
+    public function exportarHonorarios()
     {
+        $data = $this->getMediaciones();
+        //dd($mediaciones);
 
+        return Excel::download(new HonorariosExport($data), 'honorarios_de_mediaciones_fecha_'.now().'.xlsx');
+
+    }
+
+    private function getMediaciones()
+    {
+        $mediaciones = Mediacion::orderBy('numero')
+                        ->with(['expediente',
+                                'expediente.actor',
+                                'expediente.demandado',
+                                'expediente.abogado_actor',
+                                'expediente.abogado_demandado',
+                                'expediente.juzgado',
+                                'estado',
+                                'tipoCierre',
+                                'honorario'
+                                ])
+                        ->get();
+
+        $data = [];
+
+        foreach ($mediaciones as $mediacion) {
+            $honorarios_acordados = $mediacion->honorario()->exists() ? true:false;
+            $data[] = [
+                'numero'  => $mediacion->numero,
+                'observaciones' => $mediacion->observaciones,
+                'juzgado' => $mediacion->expediente->juzgado->nombre,
+                'estado' => $mediacion->estado->estado,
+                'actor' => $mediacion->expediente->actor->getApyNom(),
+                'dni_actor' => $mediacion->expediente->actor->dni,
+                'aborgado_actor' => $mediacion->expediente->abogado_actor->getApyNom(),
+                'honorarios_actor' => $honorarios_acordados ? '$ '.strval($mediacion->honorario->monto_actor):'NO ACORDADOS',
+                'fecha_de_pago_actor' => $honorarios_acordados ? Carbon::parse($mediacion->honorario->fecha_pago_actor)->format('d/m/Y'):'- - -',
+                'demandado' => $mediacion->expediente->demandado->getApyNom(),
+                'dni_demandado' => $mediacion->expediente->demandado->dni,
+                'aborgado_demandado' => $mediacion->expediente->abogado_demandado->getApyNom(),
+                'honorarios_demandado' => $honorarios_acordados ? '$ '.strval($mediacion->honorario->monto_demandado):'- - -',
+                'fecha_de_pago_demandado' => $honorarios_acordados ? Carbon::parse($mediacion->honorario->fecha_pago_demandado)->format('d/m/Y'):'- - -',
+                'honorarios_subtotal' => $honorarios_acordados ? '$ '.strval($mediacion->honorario->monto_actor + $mediacion->honorario->monto_demandado):'- - -',
+            ];
+        }
+
+        return $data;
     }
 }
