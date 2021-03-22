@@ -6,10 +6,18 @@
             <h2 class="float-left">MEDIACIONES</h2>
         </div>
     </div>
-   <div class="row">
+   <div class="row mb-4">
        <div class="col-8">
-        <a href="{{ route('mediaciones.create') }}" class="btn btn-success float-right">Nuevo <span class="fa fa-plus-square"></span></a>
-        <br>
+            <div class="btn-toolbar float-right" role="toolbar">
+                <div class="btn-group mr-2">
+                    <a href="{{ route('mediaciones.excel') }}" target="_blank" class="btn btn-success"><span class="far fa-file-excel"></span><strong>Exportar</strong></a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="{{ route('mediaciones.create') }}" class="btn btn-primary float-right"><strong>Nuevo +</strong> </a>
+                </div>
+            </div>
+
+
     </div>
 </div>
 <div class="row">

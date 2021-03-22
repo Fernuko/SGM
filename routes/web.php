@@ -36,3 +36,5 @@ Route::get('asignarHonorario/{id}','MediacionController@verAsignarHonorarios')->
 Route::post('asignarHonorario/{id}','MediacionController@asignarHonorarios')->middleware('auth')->name('asignarHonorario.post');
 
 Route::resource('manejoDeFondos', 'ManejoDeFondoController')->middleware('auth');
+
+Route::get('getHonorarios', 'MediacionController@exportarHonorarios')->middleware('auth')->name('mediaciones.excel');
