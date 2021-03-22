@@ -73,7 +73,6 @@
                           <li><a href="{{route('juzgados.index')}}">JUZGADOS</a></li>
                           <li><a href="{{route('expedientes.index')}}">EXPEDIENTES</a></li>
                           <li><a href="{{route('mediaciones.index')}}">MEDIACIONES</a></li>
-                          <li><a href="{{route('manejoDeFondos.index')}}">FONDOS</a></li>
                         </ul>
                     </div>
 

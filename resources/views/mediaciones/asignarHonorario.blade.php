@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-block btn-primary"><strong>ASIGNAR HONORARIOS</strong></button>
+                    <button type="submit" class="btn btn-block btn-primary"><strong>ASIGNAR HONORARIOS</strong>title="Honorarios" tooltip-dir="left"</button>
                 </div>
                 </form>
               </div>

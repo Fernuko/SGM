@@ -35,11 +35,11 @@
 
                                 <span>
                                     <form action="{{ route('expedientes.destroy',$expediente->id) }}" method="POST">
-                                        <a href="{{ route('expedientes.edit',$expediente->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
+                                        <a href="{{ route('expedientes.edit',$expediente->id) }}" title="Modificar" tooltip-dir="left" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
 
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar el expediente')"><span class="fa fa-trash"></span></button>
+                                        <button type="submit" title="Eliminar" tooltip-dir="left" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar el expediente')"><span class="fa fa-trash"></span></button>
                                     </form>
                                 </span>
 

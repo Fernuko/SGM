@@ -44,12 +44,12 @@
 
                                 <span>
                                     <form action="{{ route('mediaciones.destroy',$mediacion->id) }}" method="POST">
-                                        <a href="{{ route('mediaciones.edit',$mediacion->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
+                                        <a href="{{ route('mediaciones.edit',$mediacion->id) }}" title="Editar" tooltip-dir="left" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
 
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar la mediación')"><span class="fa fa-trash"></span></button>
-                                        <a href="{{ route('asignarHonorario.view',$mediacion->id) }}" class="btn btn-sm btn-primary"><strong>$</strong></a>
+                                        <button type="submit" title="Elimianr" tooltip-dir="left" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar la mediación')"><span class="fa fa-trash"></span></button>
+                                        <a href="{{ route('asignarHonorario.view',$mediacion->id) }}" title="Honorarios" tooltip-dir="left" class="btn btn-sm btn-primary"><strong>$</strong></a>
                                     </form>
                                 </span>
 

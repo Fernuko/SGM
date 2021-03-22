@@ -36,11 +36,11 @@
                             <td>
 
                                 <form action="{{ route('personas.destroy',$persona->id) }}" method="POST">
-                                    <a href="{{ route('personas.edit',$persona->id) }}" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
+                                    <a href="{{ route('personas.edit',$persona->id) }}" title="Modificar" tooltip-dir="left" class="btn btn-sm btn-warning"><span class="fa fa-edit"></span></a>
 
                                     @csrf
                                     @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar el persona')"> <span class="fa fa-trash"></span></button>
+                                        <button type="submit" title="Eliminar" tooltip-dir="left" class="btn btn-sm btn-danger" onclick="return confirm('Esta seguro desea eliminar el persona')"> <span class="fa fa-trash"></span></button>
                                 </form>
 
                             </td>
